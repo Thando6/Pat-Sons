@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pat and Sons | Fresh fatkoek in Cofimvaba from R6</title>
+<meta name="description" content="Pat and Sons sells fresh, round, fluffy fatkoek, Pat Breakfast, Full House and Kota in Cofimvaba, Eastern Cape. Build your order and send it on WhatsApp. From R6.">
+<meta name="theme-color" content="#a42d18">
+<meta property="og:title" content="Pat and Sons | Fresh fatkoek in Cofimvaba">
+<meta property="og:description" content="Round. Fluffy. No oil. Fatkoek from R6.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/menu/hero.jpg">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FoodEstablishment","name":"Pat and Sons","servesCuisine":"South African street food","address":{"@type":"PostalAddress","addressLocality":"Cofimvaba","addressRegion":"Eastern Cape","addressCountry":"ZA"}}</script>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<nav><div class="wrap"><b>PAT AND SONS</b>
+<div class="links"><a href="#menu">Menu</a><a href="#photos">Photos</a><a href="#why">Why us</a><a href="#order">Order</a><button id="theme" aria-label="Switch light or dark mode" type="button">&#9680;</button></div></div><div class="ndebele"></div></nav>
+
+<header class="hero"><div class="wrap">
+<div>
+<div class="badge" id="open" hidden><i></i><span></span></div>
+<h1><span>Fresh fatkoek.</span><span>Round. Fluffy.</span><span>No oil.</span></h1>
+<p>Made by a family that knows dough. Sold in Cofimvaba from R6.</p>
+<div class="cta"><a class="btn" href="#menu">Build your order</a><button class="btn alt" id="share" type="button">Share</button></div>
+</div>
+<div class="shot"><div class="tilt" id="tilt"><img src="images/menu/hero.jpg" alt="A fatkoek filled with sliced boiled egg and polony" width="1100" height="495" fetchpriority="high"><div class="sticker">FROM<br>R6<small>Cofimvaba</small></div></div></div>
+</div></header>
+
+<div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+
+<main>
+<div class="wrap">
+<div class="stats reveal"><div><b data-count="2">0</b><span>risings for every fatkoek</span></div><div><b data-count="8">0</b><span>things on the menu</span></div><div><b data-count="6" data-pre="R">R0</b><span>starting price</span></div></div>
+
+<section id="menu">
+<h2 class="reveal">Pick your pocket</h2>
+<p class="lead reveal">You do not need a lot of money to eat something good. Tap what you can spend today, then add to your order.</p>
+<div class="pocket" role="group" aria-label="Choose a budget">
+<button aria-pressed="true" data-max="99">All<small>everything</small></button>
+<button aria-pressed="false" data-max="6">R6<small>a little</small></button>
+<button aria-pressed="false" data-max="12">R12<small>filling</small></button>
+<button aria-pressed="false" data-max="15">R15<small>a special</small></button>
+<button aria-pressed="false" data-max="20">R20<small>proper meal</small></button>
+</div>
+<div class="menu" id="menu-list"><noscript>Please turn on JavaScript to see the menu.</noscript></div>
+<p class="note">Sauce on the side: tomato or sweet chilli. Ask about bunny chow in different sizes. Add or remove anything you like, just tell us.</p>
+</section>
+
+<section id="photos">
+<h2 class="reveal">From our table</h2>
+<p class="lead reveal">Real fatkoek, made fresh. Tap a photo to see it bigger, then swipe or use the arrows.</p>
+<div class="tabs" id="tabs" role="group" aria-label="Filter photos"></div>
+<div class="gal" id="gal"></div>
+<button class="btn" id="more" type="button">Show more photos</button>
+</section>
+</div>
+
+<div class="green"><div class="wrap"><section id="why">
+<h2 class="reveal">Why we are different</h2>
+<div class="why">
+<div class="reveal"><b>1</b><h3>No oily hands</h3><p>People tell us ours is not oily. That is the first thing they notice.</p></div>
+<div class="reveal" style="--d:.1s"><b>2</b><h3>Risen twice</h3><p>We raise the dough two times, with homemade bakery yeast, so every one is fluffy and the same size.</p></div>
+<div class="reveal" style="--d:.2s"><b>3</b><h3>Bigger and rounder</h3><p>More filling, easy to bite, with a proper crunch outside.</p></div>
+</div>
+<div class="dough reveal" id="dough" aria-label="Dough rising twice">
+<figure><svg class="d1" viewBox="0 0 120 90"><ellipse cx="60" cy="68" rx="46" ry="14" fill="#c9780e"/><ellipse class="top" cx="60" cy="60" rx="44" ry="26" fill="#f6b73c" stroke="#7a3a08" stroke-width="3"/></svg><figcaption>Mix</figcaption></figure>
+<figure><svg class="d2" viewBox="0 0 120 90"><ellipse cx="60" cy="68" rx="46" ry="14" fill="#c9780e"/><ellipse class="top" cx="60" cy="60" rx="44" ry="26" fill="#f6b73c" stroke="#7a3a08" stroke-width="3"/></svg><figcaption>Rise 1</figcaption></figure>
+<figure><svg class="d3" viewBox="0 0 120 90"><ellipse cx="60" cy="68" rx="46" ry="14" fill="#c9780e"/><ellipse class="top" cx="60" cy="60" rx="44" ry="26" fill="#f6b73c" stroke="#7a3a08" stroke-width="3"/></svg><figcaption>Rise 2</figcaption></figure>
+</div>
+</section></div></div>
+
+<div class="wrap">
+<section id="order">
+<h2 class="reveal">How to order</h2>
+<ol class="steps">
+<li class="reveal"><div><b>Build your order</b> above with the Add buttons, then open your order and send it on WhatsApp.</div></li>
+<li class="reveal" style="--d:.1s"><div><b>Find the stall.</b> We are on the street in Cofimvaba town, busiest at the start and end of the month.</div></li>
+<li class="reveal" style="--d:.2s"><div><b>Want it brought to you?</b> Regular customers around town can pay early and call us. We deliver it when it is ready.</div></li>
+</ol>
+<div class="contact reveal" id="contact"><p><b>Phone, WhatsApp and trading hours coming soon.</b></p></div>
+</section>
+
+<section id="next">
+<h2 class="reveal">What should we make next?</h2>
+<p class="lead reveal">We are growing from a stall to a shop, and we want to build it with you. Pat Bombs are sealed, filled dough balls. Which one first?</p>
+<div class="poll" id="poll" role="group" aria-label="Choose a Pat Bomb flavour">
+<button aria-pressed="false">Russian</button><button aria-pressed="false">Cheese</button><button aria-pressed="false">Chicken</button><button aria-pressed="false">Mince</button><button aria-pressed="false">Chakalaka</button>
+</div>
+<div id="thanks" aria-live="polite"></div>
+<div class="soon">
+<div class="reveal"><h3>Pat Pockets</h3><p>Folded, filled dough with local flavours.</p></div>
+<div class="reveal" style="--d:.1s"><h3>Pat Bites</h3><p>Small ones for sharing, learners and parties.</p></div>
+<div class="reveal" style="--d:.2s"><h3>Drinks</h3><p>Cold drinks, tea and coffee to sip with your fatkoek.</p></div>
+</div>
+</section>
+</div>
+</main>
+
+<div class="ndebele"></div>
+<footer><div class="disp">PAT AND SONS</div><p>Good food. Fair prices. Made for the people.</p><p>Cofimvaba, Eastern Cape, South Africa</p></footer>
+
+<button id="fab" type="button" aria-label="Open your order"></button>
+
+<dialog id="cart"><div class="sheet" id="sheet">
+<h2>Your order</h2>
+<ul id="lines"></ul>
+<div class="total"><span>Total</span><span id="total">R0</span></div>
+<label>Your name<input id="cname" autocomplete="name"></label>
+<label>Collect or delivery<select id="cmode"><option>I will collect at the stall</option><option>Please deliver (regular customers)</option></select></label>
+<label>Notes (for example: no lettuce)<textarea id="cnote" rows="2"></textarea></label>
+<div class="row" style="margin-top:14px"><button class="btn" id="send" type="button">Send on WhatsApp</button><button class="btn alt" id="copy" type="button">Copy order</button><button class="btn alt" id="clear" type="button">Clear</button><button class="btn alt" id="closecart" type="button">Close</button></div>
+<div id="msg" aria-live="polite"></div>
+</div></dialog>
+
+<dialog id="lb" class="lb" aria-label="Photo viewer"><button class="x" id="lx" type="button" aria-label="Close">&times;</button><button class="nav p" id="lp" type="button" aria-label="Previous photo">&lsaquo;</button><button class="nav n" id="ln" type="button" aria-label="Next photo">&rsaquo;</button><figure><img id="limg" alt=""><figcaption id="lcap"></figcaption></figure></dialog>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
