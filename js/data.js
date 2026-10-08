@@ -2,8 +2,8 @@
    EDIT THIS FILE: your contact details, menu and prices.
    ========================================================= */
 window.CONFIG = {
-  whatsapp: "",        // e.g. "27712345678"  (country code, no + or spaces)
-  phone: "",           // e.g. "071 234 5678"
+  whatsapp: "27719441177", // WhatsApp Business (country code 27, no + or spaces)
+  phone: "071 944 1177",
   hoursText: "",       // e.g. "Mon to Sat, 07:00 to 17:00"
   // Optional "Open now" badge. Leave days empty to hide it.
   openDays: [],        // e.g. [1,2,3,4,5,6]  (0 = Sunday ... 6 = Saturday)
