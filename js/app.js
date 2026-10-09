@@ -53,7 +53,7 @@
   }
 
   /* ---------- ticker ---------- */
-  var tk = "<span>R6 PLAIN</span><span>&#9670;</span><span>R10 RUSSIAN</span><span>&#9670;</span><span>R12 LIVER &amp; PATTIE</span><span>&#9670;</span><span>R15 PAT BREAKFAST</span><span>&#9670;</span><span>R20 FULL HOUSE &amp; KOTA</span><span>&#9670;</span>";
+  var tk = "<span>R6 PLAIN</span><span>&#9670;</span><span>R10 RUSSIAN</span><span>&#9670;</span><span>R12 LIVER &amp; PATTIE</span><span>&#9670;</span><span>R15 PAT BREAKFAST</span><span>&#9670;</span><span>R20 FULL HOUSE</span><span>&#9670;</span><span>R25 KOTA</span>";
   $("#ticker").innerHTML = tk + tk;
 
   /* ---------- open now badge ---------- */
@@ -87,7 +87,7 @@
     var el = document.createElement("article");
     el.className = "dish reveal" + (m.star ? " star" : ""); el.dataset.p = m.price; el.dataset.id = m.id; el.style.setProperty("--d", (i % 3) * .1 + "s");
     var ph = m.img ? '<div class="ph"><div class="imgbox"><img src="images/menu/' + m.img + '.jpg" alt="' + m.name + '" width="800" height="450" loading="lazy"></div>' : '<div class="ph pat">';
-    el.innerHTML = ph + '<span class="tag">R' + m.price + '</span></div><div class="body"><h3>' + m.name + "</h3><p>" + m.desc + '</p><div class="add"><button class="btn" type="button" data-a="add">Add to order</button><div class="step"><button type="button" data-a="sub" aria-label="Remove one">&minus;</button><output>0</output><button type="button" data-a="add" aria-label="Add one">+</button></div></div></div>';
+    el.innerHTML = ph + '<span class="tag">R' + m.price + '</span></div><div class="body"><h3>' + m.name + "</h3><p>" + m.desc + '</p><div class="add"><button class="btn" type="button" data-a="add">Add</button><button class="btn alt" type="button" data-a="remove">Remove</button><output>0</output></div></div>';
     list.appendChild(el); watch(el);
   });
   list.addEventListener("click", function (e) {
@@ -101,7 +101,7 @@
     var f = $("#fab"); f.classList.toggle("show", n > 0); f.textContent = "Your order \u00b7 " + n + " \u00b7 R" + t;
     if (bumpId) { f.classList.remove("bump"); void f.offsetWidth; f.classList.add("bump"); var d = $('.dish[data-id="' + bumpId + '"]'); d.classList.remove("bump"); void d.offsetWidth; d.classList.add("bump"); }
     store("pat-cart", cart); $("#total").textContent = "R" + t;
-    $("#lines").innerHTML = Object.keys(cart).map(function (k) { return "<li><span>" + cart[k] + " x " + byId[k].name + "</span><b>R" + cart[k] * byId[k].price + "</b></li>"; }).join("") || "<li>Nothing yet. Close this and tap Add to order.</li>";
+    $("#lines").innerHTML = Object.keys(cart).map(function (k) { return "<li><span>" + cart[k] + " x " + byId[k].name + "</span><b>R" + cart[k] * byId[k].price + "</b></li>"; }).join("") || "<li>Nothing in your basket yet.</li>";
   }
   Object.keys(cart).forEach(function (k) { if (!byId[k]) delete cart[k]; });
   sync();
@@ -118,19 +118,39 @@
   $("#closecart").addEventListener("click", function () { dlg.close(); });
   dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
   $("#clear").addEventListener("click", function () { cart = {}; sync(); });
+
+  function validateOrder() {
+    if (!Object.keys(cart).length) return { valid: false, msg: "Add something to your order first." };
+
+    var name = $("#cname").value.trim();
+    var location = $("#clocation").value.trim();
+
+    if (!name) return { valid: false, msg: "Please enter your name before sending the order." };
+    if (!location) return { valid: false, msg: "Please enter your location before sending the order." };
+
+    return { valid: true };
+  }
+
   function orderText() {
     var t = 0, ls = Object.keys(cart).map(function (k) { t += cart[k] * byId[k].price; return cart[k] + " x " + byId[k].name + " (R" + cart[k] * byId[k].price + ")"; });
-    var nm = $("#cname").value.trim(), nt = $("#cnote").value.trim();
-    return "Hi Pat and Sons, I would like to order:\n" + ls.join("\n") + "\nTotal: R" + t + "\n" + $("#cmode").value + (nm ? "\nName: " + nm : "") + (nt ? "\nNotes: " + nt : "");
+    var nm = $("#cname").value.trim();
+    var loc = $("#clocation").value.trim();
+    var nt = $("#cnote").value.trim();
+    return "Hi Pat and Sons, I would like to order:\n" + ls.join("\n") + "\nTotal: R" + t + "\n" + $("#cmode").value + "\nName: " + nm + "\nLocation: " + loc + (nt ? "\nNotes: " + nt : "");
   }
+
   function msg(s) { $("#msg").textContent = s; }
+
   $("#send").addEventListener("click", function () {
-    if (!Object.keys(cart).length) return msg("Add something to your order first.");
+    var result = validateOrder();
+    if (!result.valid) return msg(result.msg);
     if (!C.whatsapp) { msg("WhatsApp is not set up yet. Use Copy order and send it to us."); return; }
     window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(orderText()), "_blank", "noopener");
   });
+
   $("#copy").addEventListener("click", function () {
-    if (!Object.keys(cart).length) return msg("Add something to your order first.");
+    var result = validateOrder();
+    if (!result.valid) return msg(result.msg);
     var t = orderText();
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { msg("Order copied. Paste it into a message to us."); }, function () { msg(t); }); else msg(t);
   });
