@@ -53,7 +53,7 @@
   }
 
   /* ---------- ticker ---------- */
-  var tk = "<span>R6 PLAIN</span><span>&#9670;</span><span>R10 RUSSIAN</span><span>&#9670;</span><span>R12 LIVER &amp; PATTIE</span><span>&#9670;</span><span>R15 PAT BREAKFAST</span><span>&#9670;</span><span>R20 FULL HOUSE</span><span>&#9670;</span><span>R25 KOTA</span>";
+  var tk = "<span>R6 PLAIN</span><span>&#9670;</span><span>R10 RUSSIAN</span><span>&#9670;</span><span>R12 LIVER &amp; PATTIE</span><span>&#9670;</span><span>R15 PAT BREAKFAST</span><span>&#9670;</span><span>R20 FULL HOUSE &amp; KOTA</span>";
   $("#ticker").innerHTML = tk + tk;
 
   /* ---------- open now badge ---------- */
@@ -101,7 +101,7 @@
     var f = $("#fab"); f.classList.toggle("show", n > 0); f.textContent = "Your order \u00b7 " + n + " \u00b7 R" + t;
     if (bumpId) { f.classList.remove("bump"); void f.offsetWidth; f.classList.add("bump"); var d = $('.dish[data-id="' + bumpId + '"]'); d.classList.remove("bump"); void d.offsetWidth; d.classList.add("bump"); }
     store("pat-cart", cart); $("#total").textContent = "R" + t;
-    $("#lines").innerHTML = Object.keys(cart).map(function (k) { return "<li><span>" + cart[k] + " x " + byId[k].name + "</span><b>R" + cart[k] * byId[k].price + "</b></li>"; }).join("") || "<li>Nothing in your basket yet.</li>";
+    $("#lines").innerHTML = Object.keys(cart).map(function (k) { return "<li><span>" + cart[k] + " x " + byId[k].name + "</span><b>R" + cart[k] * byId[k].price + "</b></li>"; }).join("") || "<li>No items yet</li>";
   }
   Object.keys(cart).forEach(function (k) { if (!byId[k]) delete cart[k]; });
   sync();
@@ -122,21 +122,26 @@
   function validateOrder() {
     if (!Object.keys(cart).length) return { valid: false, msg: "Add something to your order first." };
 
-    var name = $("#cname").value.trim();
-    var location = $("#clocation").value.trim();
+    var nameField = $("#cname");
+    var name = nameField ? nameField.value.trim() : "";
+    var locationField = $("#clocation");
+    var location = locationField ? locationField.value.trim() : "";
 
     if (!name) return { valid: false, msg: "Please enter your name before sending the order." };
-    if (!location) return { valid: false, msg: "Please enter your location before sending the order." };
+    if (locationField && !location) return { valid: false, msg: "Please enter your location before sending the order." };
 
     return { valid: true };
   }
 
   function orderText() {
     var t = 0, ls = Object.keys(cart).map(function (k) { t += cart[k] * byId[k].price; return cart[k] + " x " + byId[k].name + " (R" + cart[k] * byId[k].price + ")"; });
-    var nm = $("#cname").value.trim();
-    var loc = $("#clocation").value.trim();
-    var nt = $("#cnote").value.trim();
-    return "Hi Pat and Sons, I would like to order:\n" + ls.join("\n") + "\nTotal: R" + t + "\n" + $("#cmode").value + "\nName: " + nm + "\nLocation: " + loc + (nt ? "\nNotes: " + nt : "");
+    var nm = $("#cname") ? $("#cname").value.trim() : "";
+    var loc = $("#clocation") ? $("#clocation").value.trim() : "";
+    var nt = $("#cnote") ? $("#cnote").value.trim() : "";
+    var text = "Hi Pat and Sons, I would like to order:\n" + ls.join("\n") + "\nTotal: R" + t + "\n" + $("#cmode").value + "\nName: " + nm;
+    if (loc) text += "\nLocation: " + loc;
+    if (nt) text += "\nNotes: " + nt;
+    return text;
   }
 
   function msg(s) { $("#msg").textContent = s; }
