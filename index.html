@@ -21,7 +21,8 @@
 <body>
 <div class="bar" id="bar"></div>
 <nav><div class="wrap"><b>PAT AND SONS</b>
-<div class="links"><a href="#menu">Menu</a><a href="#photos">Photos</a><a href="#why">Why us</a><a href="#order">Order</a><button id="theme" aria-label="Switch light or dark mode" type="button">&#9680;</button></div></div><div class="ndebele"></div></nav>
+<div class="links"><a href="#menu">Menu</a><a href="#photos">Photos</a><a href="#why">Why us</a><a href="#order">Order</a><button id="theme" aria-label="Switch light or dark mode" type="button">&#9788;</button></div></div></nav>
+<div class="ndebele"></div>
 
 <header class="hero"><div class="wrap">
 <div>
@@ -30,14 +31,14 @@
 <p>Made by a family that knows dough. Sold in Cofimvaba from R6.</p>
 <div class="cta"><a class="btn" href="#menu">Build your order</a><button class="btn alt" id="share" type="button">Share</button></div>
 </div>
-<div class="shot"><div class="tilt" id="tilt"><img src="images/menu/hero.jpg" alt="A fatkoek filled with sliced boiled egg and polony" width="1100" height="495" fetchpriority="high"><div class="sticker">FROM<br>R6<small>Cofimvaba</small></div></div></div>
+<div class="shot"><div class="tilt" id="tilt"><img src="images/menu/hero.jpg" alt="A fatkoek filled with sliced boiled egg and polony" width="1100" height="495" fetchpriority="high"><div class="stick"><small>FROM</small><b>R6</b></div></div></div>
 </div></header>
 
 <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
 
 <main>
 <div class="wrap">
-<div class="stats reveal"><div><b data-count="2">0</b><span>risings for every fatkoek</span></div><div><b data-count="8">0</b><span>things on the menu</span></div><div><b data-count="6" data-pre="R">R0</b><span>starting price</span></div></div>
+<div class="stats reveal"><div><b data-count="2">0</b><span>risings for every fatkoek</span></div><div><b data-count="8">0</b><span>things on the menu</span></div><div><b data-count="6" data-pre="R">0</b><span>starting price</span></div></div>
 
 <section id="menu">
 <h2 class="reveal">Pick your pocket</h2>
@@ -112,7 +113,8 @@
 <h2>Your order</h2>
 <ul id="lines"></ul>
 <div class="total"><span>Total</span><span id="total">R0</span></div>
-<label>Your name<input id="cname" autocomplete="name"></label>
+<label>Your name<input id="cname" autocomplete="name" required></label>
+<label>Your location<input id="clocation" type="text" autocomplete="street-address" placeholder="Enter your delivery or collection area" required></label>
 <label>Collect or delivery<select id="cmode"><option>I will collect at the stall</option><option>Please deliver (regular customers)</option></select></label>
 <label>Notes (for example: no lettuce)<textarea id="cnote" rows="2"></textarea></label>
 <div class="row" style="margin-top:14px"><button class="btn" id="send" type="button">Send on WhatsApp</button><button class="btn alt" id="copy" type="button">Copy order</button><button class="btn alt" id="clear" type="button">Clear</button><button class="btn alt" id="closecart" type="button">Close</button></div>
